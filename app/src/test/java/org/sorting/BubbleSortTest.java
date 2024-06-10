@@ -19,4 +19,12 @@ class BubbleSortingTest {
     int[] expected = {};
     assertArrayEquals(expected, arr);
   }
+
+  @Test
+  public void testBubbleSortWithSingleElement() {
+    int[] arr = {5};
+    BubbleSort.sort(arr);
+    int[] expected = {5};
+    assertArrayEquals(expected, arr);
+  }
 }
