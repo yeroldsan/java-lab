@@ -12,6 +12,14 @@ class BubbleSortingTest {
     assertArrayEquals(expected, arr);
   }
 
+  @Test 
+  public void testBubbleSortWithNegativeNumbers() {
+    int[] arr = {5, -2, 8, -3, 1, 6, -4};
+    BubbleSort.sort(arr);
+    int[] expected = {-4, -3, -2, 1, 5, 6, 8};
+    assertArrayEquals(expected, arr);
+  }
+
   @Test
   public void testBubbleSortWithEmptyArray() {
     int[] arr = {};
