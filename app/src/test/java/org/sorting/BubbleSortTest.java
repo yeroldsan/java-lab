@@ -11,4 +11,12 @@ class BubbleSortingTest {
     int[] expected = {1, 2, 3, 4, 5, 6, 8};
     assertArrayEquals(expected, arr);
   }
+
+  @Test
+  public void testBubbleSortWithEmptyArray() {
+    int[] arr = {};
+    BubbleSort.sort(arr);
+    int[] expected = {};
+    assertArrayEquals(expected, arr);
+  }
 }
