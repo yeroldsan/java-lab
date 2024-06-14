@@ -34,4 +34,22 @@ public class ObjectTest {
       assertInstanceOf(Employee.class, employee);
     }
   }
+
+  @Nested
+  class PropertyTypes {
+    @Test
+    void testEmployeeNameType() {
+      assertInstanceOf(String.class, employee.getName());
+    }
+
+    @Test
+    void testEmployeeAgeType() {
+      assertInstanceOf(Integer.class, employee.getAge());
+    }
+
+    @Test
+    void testEmployeeYearlySalaryType() {
+      assertInstanceOf(Double.class, employee.calculateYearlySalary());
+    }
+  }
 }
