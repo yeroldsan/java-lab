@@ -7,7 +7,7 @@ public class Employee {
 
   /**
    * Class constructor. Creates an Employee object.
-   * 
+   *
    * @param name   the name of the employee
    * @param age    the age of the employee
    * @param salary the salary of the employee
@@ -20,7 +20,7 @@ public class Employee {
 
   /**
    * Returns the name of the employee.
-   * 
+   *
    * @return the name of the employee
    */
   public String getName() {
@@ -29,7 +29,7 @@ public class Employee {
 
   /**
    * Returns the age of the employee.
-   * 
+   *
    * @return the age of the employee
    */
   public int getAge() {
@@ -38,10 +38,28 @@ public class Employee {
 
   /**
    * Returns the salary of the employee.
-   * 
+   *
    * @return the salary of the employee
    */
   public double getSalary() {
     return salary;
+  }
+
+  /**
+   * Calculates the yearly salary of the employee.
+   *
+   * @return the yearly salary of the employee
+   */
+  public double calculateYearlySalary() {
+    return salary * 12;
+  }
+
+  /**
+   * Raises the salary of the employee by a given percentage.
+   *
+   * @param percentage the percentage by which to raise the salary
+   */
+  public void raiseSalary(double percentage) {
+    salary += salary * percentage / 100;
   }
 }
