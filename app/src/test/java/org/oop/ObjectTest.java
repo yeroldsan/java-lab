@@ -52,4 +52,28 @@ public class ObjectTest {
       assertInstanceOf(Double.class, employee.calculateYearlySalary());
     }
   }
+
+  @Nested
+  class PropertyValues {
+    @Test
+    void testNameEquality() {
+      assertEquals("John Doe", employee.getName());
+    }
+
+    @Test
+    void testAgeEquality() {
+      assertEquals(64, employee.getAge());
+    }
+
+    @Test
+    void testYearlySalaryEquality() {
+      assertEquals(12000, employee.calculateYearlySalary());
+    }
+
+    @Test
+    void testRaiseSalary() {
+      employee.raiseSalary(10);
+      assertEquals(1100, employee.getSalary());
+    }
+  }
 }
