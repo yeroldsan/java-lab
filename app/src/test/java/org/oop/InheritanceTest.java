@@ -34,4 +34,56 @@ public class InheritanceTest {
       assertInstanceOf(manager.getClass(), manager);
     }
   }
+
+  @Nested
+  class PropertyTypes {
+    @Test
+    void testManagerNameType() {
+      assertInstanceOf(String.class, manager.getName());
+    }
+
+    @Test
+    void testManagerAgeType() {
+      assertInstanceOf(Integer.class, manager.getAge());
+    }
+
+    @Test
+    void testManagerYearlySalaryType() {
+      assertInstanceOf(Double.class, manager.calculateYearlySalary());
+    }
+
+    @Test
+    void testManagerBonusType() {
+      assertInstanceOf(Double.class, manager.getBonus());
+    }
+  }
+
+  @Nested
+  class PropertyGetters {
+    @Test
+    void testNameEquality() {
+      assertEquals("Jane Doe", manager.getName());
+    }
+
+    @Test
+    void testAgeEquality() {
+      assertEquals(32, manager.getAge());
+    }
+
+    @Test
+    void testYearlySalaryEquality() {
+      assertEquals(24100, manager.calculateYearlySalary());
+    }
+
+    @Test
+    void testBonusEquality() {
+      assertEquals(100, manager.getBonus());
+    }
+
+    @Test
+    void testRaiseSalary() {
+      manager.raiseSalary(10);
+      assertEquals(2200, manager.getSalary());
+    }
+  }
 }
