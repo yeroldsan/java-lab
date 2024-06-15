@@ -54,7 +54,7 @@ public class ObjectTest {
   }
 
   @Nested
-  class PropertyValues {
+  class PropertyGetters {
     @Test
     void testNameEquality() {
       assertEquals("John Doe", employee.getName());
