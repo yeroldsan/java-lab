@@ -46,12 +46,39 @@ public class Employee {
   }
 
   /**
+   * Sets the name of the employee.
+   *
+   * @param name the new name of the employee
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the age of the employee.
+   *
+   * @param age the new age of the employee
+   */
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  /**
+   * Sets the salary of the employee.
+   *
+   * @param salary the new salary of the employee
+   */
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+
+  /**
    * Calculates the yearly salary of the employee.
    *
    * @return the yearly salary of the employee
    */
   public double calculateYearlySalary() {
-    return salary * 12;
+    return getSalary() * 12;
   }
 
   /**
@@ -60,6 +87,8 @@ public class Employee {
    * @param percentage the percentage by which to raise the salary
    */
   public void raiseSalary(double percentage) {
-    salary += salary * percentage / 100;
+    double raise = getSalary() * percentage / 100;
+    double newSalary = getSalary() + raise;
+    setSalary(newSalary);
   }
 }
