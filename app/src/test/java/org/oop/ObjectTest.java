@@ -76,4 +76,25 @@ public class ObjectTest {
       assertEquals(1100, employee.getSalary());
     }
   }
+
+  @Nested
+  class PropertySetters {
+    @Test
+    void testSetName() {
+      employee.setName("Jane Doe");
+      assertEquals("Jane Doe", employee.getName());
+    }
+
+    @Test
+    void testSetAge() {
+      employee.setAge(32);
+      assertEquals(32, employee.getAge());
+    }
+
+    @Test
+    void testSetSalary() {
+      employee.setSalary(2000);
+      assertEquals(2000, employee.getSalary());
+    }
+  }
 }
