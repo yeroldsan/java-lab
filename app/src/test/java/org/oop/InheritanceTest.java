@@ -31,7 +31,12 @@ public class InheritanceTest {
 
     @Test
     void testManagerType() {
-      assertInstanceOf(manager.getClass(), manager);
+      assertInstanceOf(Manager.class, manager);
+    }
+
+    @Test
+    void testManagerInheritance() {
+      assertInstanceOf(Employee.class, manager);
     }
   }
 
