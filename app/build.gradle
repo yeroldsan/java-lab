@@ -43,6 +43,7 @@ tasks.named('test') {
     testLogging {
 		events "passed", "skipped", "failed"
         exceptionFormat "full"
+        showCauses false
         showStackTraces false
 	}
 }
