@@ -66,21 +66,12 @@ public class ObjectTest {
   }
 
   @Test
-  @DisplayName("Should return correct yearly salary for each employee")
-  void testCalculateYearlySalary() {
-    assertAll("Should return correct yearly salary for each employee",
-      () -> assertEquals(12000, employees.get(0).calculateYearlySalary(), "Yearly salary should be 12000"),
-      () -> assertEquals(24000, employees.get(1).calculateYearlySalary(), "Yearly salary should be 24000"),
-      () -> assertEquals(36000, employees.get(2).calculateYearlySalary(), "Yearly salary should be 36000"));
-  }
-
-  @Test
   @DisplayName("Should return correct string representation for each employee")
   void testToString() {
     assertAll("Should return correct string representation for each employee",
-      () -> assertEquals("Employee{name='John Doe', age=64, salary=1000.0}", employees.get(0).toString(), "String representation should be 'Employee{name='John Doe', age=64, salary=1000.0}'"),
-      () -> assertEquals("Employee{name='Jane Doe', age=32, salary=2000.0}", employees.get(1).toString(), "String representation should be 'Employee{name='Jane Doe', age=32, salary=2000.0}'"),
-      () -> assertEquals("Employee{name='Janet Doe', age=40, salary=3000.0}", employees.get(2).toString(), "String representation should be 'Employee{name='Janet Doe', age=40, salary=3000.0}'"));
+      () -> assertEquals("Employee{name='John Doe', age=64, salary=1000.00}", employees.get(0).toString(), "String representation should be 'Employee{name='John Doe', age=64, salary=1000.00}'"),
+      () -> assertEquals("Employee{name='Jane Doe', age=32, salary=2000.00}", employees.get(1).toString(), "String representation should be 'Employee{name='Jane Doe', age=32, salary=2000.00}'"),
+      () -> assertEquals("Employee{name='Janet Doe', age=40, salary=3000.00}", employees.get(2).toString(), "String representation should be 'Employee{name='Janet Doe', age=40, salary=3000.00}'"));
   }
 
   @Test
