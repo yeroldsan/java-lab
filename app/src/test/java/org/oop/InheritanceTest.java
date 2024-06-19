@@ -96,4 +96,13 @@ public class InheritanceTest {
       assertEquals(200, manager.getBonus(), "Bonus should be 200");
     }
   }
+
+  @Test
+  @DisplayName("Should not allow nagative values for object properties")
+  void testNegativeValues() {
+    assertAll("Should not allow negative values for object properties",
+      () -> assertThrows(IllegalArgumentException.class, () -> manager.setAge(-1), "Should throw exception for negative age"),
+      () -> assertThrows(IllegalArgumentException.class, () -> manager.setSalary(-1), "Should throw exception for negative salary"),
+      () -> assertThrows(IllegalArgumentException.class, () -> manager.setBonus(-1), "Should throw exception for negative bonus"));
+  }
 }
