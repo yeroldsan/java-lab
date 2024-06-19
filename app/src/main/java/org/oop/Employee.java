@@ -60,6 +60,9 @@ public class Employee {
    * @param age the new age of the employee
    */
   public void setAge(int age) {
+    if (age < 0) {
+      throw new IllegalArgumentException("Age cannot be negative");
+    }
     this.age = age;
   }
 
@@ -67,8 +70,12 @@ public class Employee {
    * Sets the salary of the employee.
    *
    * @param salary the new salary of the employee
+   * @throws IllegalArgumentException if the salary is negative
    */
   public void setSalary(double salary) {
+    if (salary < 0) {
+      throw new IllegalArgumentException("Salary cannot be negative");
+    }
     this.salary = salary;
   }
 
