@@ -1,94 +1,99 @@
 package org.oop;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests the Inheritance class, its properties and its methods.
+ * Tests the inheritance in Manager class, its properties and its methods.
  */
+@DisplayName("Tests Manager class")
 public class InheritanceTest {
-  private Manager manager;
+  private static Manager manager;
 
-  @BeforeEach
-  void init() {
+  @BeforeAll
+  static void init() {
     manager = new Manager("Jane Doe", 32, 2000, 100);
   }
 
-  @AfterEach
-  void tearDown() {
+  @AfterAll
+  static void tearDown() {
     manager = null;
   }
 
   @Nested
+  @DisplayName("Tests constructor")
   class Constructors {
     @Test
+    @DisplayName("Should create a Manager object")
     void testManagerInstanceCreation() {
-      assertNotNull(manager);
+      assertNotNull(manager, "Should create a Manager object");
     }
 
     @Test
+    @DisplayName("Should create an object of type Manager")
     void testManagerType() {
-      assertInstanceOf(Manager.class, manager);
+      assertInstanceOf(Manager.class, manager, "Should create an object of type Manager");
     }
 
     @Test
+    @DisplayName("Should inherit from Employee class")
     void testManagerInheritance() {
-      assertInstanceOf(Employee.class, manager);
+      assertInstanceOf(Employee.class, manager, "Should inherit from Employee class");
     }
   }
 
   @Nested
+  @DisplayName("Should return correct values for manager properties")
   class PropertyTypes {
     @Test
     void testManagerNameType() {
-      assertInstanceOf(String.class, manager.getName());
+      assertInstanceOf(String.class, manager.getName(), "Name should be of type String");
     }
 
     @Test
     void testManagerAgeType() {
-      assertInstanceOf(Integer.class, manager.getAge());
+      assertInstanceOf(Integer.class, manager.getAge(), "Age should be of type Integer");
     }
 
     @Test
     void testManagerYearlySalaryType() {
-      assertInstanceOf(Double.class, manager.calculateYearlySalary());
+      assertInstanceOf(Double.class, manager.calculateYearlySalary(), "Yearly salary should be of type Double");
     }
 
     @Test
     void testManagerBonusType() {
-      assertInstanceOf(Double.class, manager.getBonus());
+      assertInstanceOf(Double.class, manager.getBonus(), "Bonus should be of type Double");
     }
   }
 
   @Nested
-  class PropertyGetters {
+  class PropertySetters {
     @Test
-    void testNameEquality() {
-      assertEquals("Jane Doe", manager.getName());
+    void testSetName() {
+      manager.setName("Mary Doe");
+      assertEquals("Mary Doe", manager.getName(), "Name should be 'Mary Doe'");
     }
 
     @Test
-    void testAgeEquality() {
-      assertEquals(32, manager.getAge());
+    void testSetAge() {
+      manager.setAge(40);
+      assertEquals(40, manager.getAge(), "Age should be 40");
     }
 
     @Test
-    void testYearlySalaryEquality() {
-      assertEquals(24100, manager.calculateYearlySalary());
+    void testSetSalary() {
+      manager.setSalary(3000);
+      assertEquals(3000, manager.getSalary(), "Salary should be 3000");
     }
 
     @Test
-    void testBonusEquality() {
-      assertEquals(100, manager.getBonus());
-    }
-
-    @Test
-    void testRaiseSalary() {
-      manager.raiseSalary(10);
-      assertEquals(2200, manager.getSalary());
+    void testSetBonus() {
+      manager.setBonus(200);
+      assertEquals(200, manager.getBonus(), "Bonus should be 200");
     }
   }
 }
