@@ -19,6 +19,20 @@ public class Employee {
   }
 
   /**
+   * Returns a string representation of the employee.
+   *
+   * @return a string representation of the employee
+   */
+  @Override
+  public String toString() {
+    return String.format(
+      "Employee{name='%s', age=%d, salary=%.2f}",
+      getName(),
+      getAge(),
+      getSalary());
+  }
+
+  /**
    * Returns the name of the employee.
    *
    * @return the name of the employee
