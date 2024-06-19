@@ -31,6 +31,9 @@ public class Manager extends Employee {
    * @param bonus the new bonus of the manager
    */
   public void setBonus(double bonus) {
+    if (bonus < 0) {
+      throw new IllegalArgumentException("Bonus cannot be negative");
+    }
     this.bonus = bonus;
   }
 
