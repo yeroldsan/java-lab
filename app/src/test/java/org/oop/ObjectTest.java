@@ -96,24 +96,24 @@ public class ObjectTest {
       () -> assertEquals(4000, employee.getSalary(), "Salary should be 4000"));
   }
 
-@Nested
-class PropertySetterEdgeCaseTests {
-  @Test
-  void shouldNotAcceptNegativeAge() {
-    Employee employee = employees.get(0);
-    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-      () -> employee.setAge(-1), "Should not accept negative age");
-    assertEquals("Age cannot be negative", exception.getMessage());
-  }
+  @Nested
+  class PropertySetterEdgeCaseTests {
+    @Test
+    void shouldNotAcceptNegativeAge() {
+      Employee employee = employees.get(0);
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> employee.setAge(-1), "Should not accept negative age");
+      assertEquals("Age cannot be negative", exception.getMessage());
+    }
 
-  @Test
-  void shouldNotAcceptNegativeSalary() {
-    Employee employee = employees.get(1);
-    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-      () -> employee.setSalary(-1000.0), "It should throw an exception when salary is negative");
-    assertEquals("Salary cannot be negative", exception.getMessage());
+    @Test
+    void shouldNotAcceptNegativeSalary() {
+      Employee employee = employees.get(1);
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        () -> employee.setSalary(-1000.0), "It should throw an exception when salary is negative");
+      assertEquals("Salary cannot be negative", exception.getMessage());
+    }
   }
-}
 
   private static List<Employee> getEmployees() {
     return List.of(
