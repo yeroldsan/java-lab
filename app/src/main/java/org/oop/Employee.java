@@ -1,43 +1,43 @@
 package org.oop;
 
 /**
- * Exercise: Encapsulation
+ * Exercise: Implementing a Employee class
  * 
- * 1. Create an Employee class that has the following properties and methods.
+ * Objective: Create an Employee class with encapsulated fields and related
+ * methods.
  * 
- * The Employee class should have the following fields:
+ * Steps:
+ * 1. Define the Employee class with the following private fields:
+ * - name (String)
+ * - age (int)
+ * - salary (double)
  * 
- * - name: String
- * - age: int
- * - salary: double
+ * 2. Create a constructor for the Employee class that initializes these fields:
+ * - Employee(String name, int age, double salary)
  * 
- * The Employee class should have the following constructors:
+ * 3. Implement public setter methods for each field:
+ * - void setName(String name)
+ * - void setAge(int age)
+ * - void setSalary(double salary)
  * 
- * - Employee(String, int, double)
+ * 4. Implement public getter methods for each field:
+ * - String getName()
+ * - int getAge()
+ * - double getSalary()
  * 
- * The Employee class should have the following setters:
+ * 5. Add a method to calculate the yearly salary:
+ * - double calculateYearlySalary()
+ * - This method should return the salary multiplied by 12.
  * 
- * - setName(String)
- * - setAge(int)
- * - setSalary(double)
+ * 6. Add a method to raise the salary by a given percentage:
+ * - void raiseSalary(double percentage)
+ * - This method should increase the salary by the given percentage.
  * 
- * Encapsulate the Employee class by making its fields private and providing
- * public methods to access them.
- * 
- * The Employee class should have the following getters:
- * 
- * - getName(): String
- * - getAge(): int
- * - getSalary(): double
- * 
- * The Employee class should have the following methods:
- * 
- * - calculateYearlySalary(): double
- * - raiseSalary(double)
- * 
- * The raiseSalary method should raise the salary of the employee by a given
- * percentage.
- * 
+ * Example Usage:
+ * Employee emp = new Employee("John Doe", 30, 50000);
+ * emp.raiseSalary(10); // Raises salary by 10%
+ * double yearlySalary = emp.calculateYearlySalary(); // Should return the
+ * yearly salary
  */
 
 public class Employee {
