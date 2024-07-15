@@ -1,9 +1,10 @@
 package org.oop;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -11,29 +12,39 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 public class EncapsulationTest {
-  private Employee employee;
+  private static Employee employee;
 
-  @BeforeEach
-  void init() {
+  @BeforeAll
+  static void init() {
     employee = new Employee("John Doe", 64, 1000);
   }
 
-  @AfterEach
-  void tearDown() {
+  @AfterAll
+  static void tearDown() {
     employee = null;
   }
 
-  @Nested
-  class PrivateFields {
+  // @Nested
+  // class PrivateFields {
+  // Wihtout private keyword, the variable is package-private. Still accessible here!
     @Test
-    void testPrivateNameField() {
-      assertThrows(
-        NoSuchFieldException.class,
-        () -> employee.getClass().getField("name"),
-        "Field name should be private"
-      );
+    @DisplayName("Should not expose private fields")
+    void testPrivateFields() {
+      assertAll("Should not expose private fields",
+        () -> assertThrows(
+          NoSuchFieldException.class,
+          () -> employee.getClass().getField("name"),
+          "Field name should not be accessible"),
+        () -> assertThrows(
+          NoSuchFieldException.class,
+          () -> employee.getClass().getField("age"),
+          "Field age should not be accessible"),
+        () -> assertThrows(
+          NoSuchFieldException.class,
+          () -> employee.getClass().getField("salary"),
+          "Field salary should not be accessible"));
     }
-  }
+  // }
 
   @Nested
   class Constructors {
