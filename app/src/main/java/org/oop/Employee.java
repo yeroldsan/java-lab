@@ -1,5 +1,45 @@
 package org.oop;
 
+/**
+ * Exercise: Encapsulation
+ * 
+ * 1. Create an Employee class that has the following properties and methods.
+ * 
+ * The Employee class should have the following fields:
+ * 
+ * - name: String
+ * - age: int
+ * - salary: double
+ * 
+ * The Employee class should have the following constructors:
+ * 
+ * - Employee(String, int, double)
+ * 
+ * The Employee class should have the following setters:
+ * 
+ * - setName(String)
+ * - setAge(int)
+ * - setSalary(double)
+ * 
+ * Encapsulate the Employee class by making its fields private and providing
+ * public methods to access them.
+ * 
+ * The Employee class should have the following getters:
+ * 
+ * - getName(): String
+ * - getAge(): int
+ * - getSalary(): double
+ * 
+ * The Employee class should have the following methods:
+ * 
+ * - calculateYearlySalary(): double
+ * - raiseSalary(double)
+ * 
+ * The raiseSalary method should raise the salary of the employee by a given
+ * percentage.
+ * 
+ */
+
 public class Employee {
   private String name;
   private int age;
