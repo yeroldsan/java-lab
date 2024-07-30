@@ -33,6 +33,10 @@ package org.oop;
  * - void raiseSalary(double percentage)
  * - This method should increase the salary by the given percentage.
  * 
+ * 7. Override the toString method to provide a string representation of the
+ * employee:
+ * - public String toString()
+ * 
  * Example Usage:
  * Employee emp = new Employee("John Doe", 30, 50000);
  * emp.raiseSalary(10); // Raises salary by 10%
