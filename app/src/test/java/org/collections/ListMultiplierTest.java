@@ -37,7 +37,7 @@ public class ListMultiplierTest {
 
   @Test
   @DisplayName("Should return product for a multiple element list")
-  public void testMultiply_MultipleElementList_ReturnsProduct() {
+  public void testMultiplyMultipleElementList() {
     multiplier.add(2);
     multiplier.add(3);
     multiplier.add(4);
@@ -46,7 +46,7 @@ public class ListMultiplierTest {
 
   @Test
   @DisplayName("Should return correct value for a list with zero")
-  public void testMultiply_ZeroInList_ReturnsZero() {
+  public void testMultiplyZeroInList() {
     multiplier.add(2);
     multiplier.add(0);
     multiplier.add(4);
@@ -55,7 +55,7 @@ public class ListMultiplierTest {
 
   @Test
   @DisplayName("Should throw exception for null in list")
-  public void testMultiply_NullInList_ThrowsNullPointerException() {
+  public void testMultiplyNullInList() {
     assertThrows(NullPointerException.class, () -> multiplier.add(null), "Should throw NullPointerException for null in list");
   }
 }
