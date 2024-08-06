@@ -45,6 +45,8 @@ package org.oop;
  */
 
 public class Employee {
+
+  // Wihtout private keyword, the variable is still accessible at package level!
   private String name;
   private int age;
   private double salary;
