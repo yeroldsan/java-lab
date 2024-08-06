@@ -23,9 +23,10 @@ public class ListMultiplierTest {
   }
 
   @Test
-  @DisplayName("Should return correct value for an empty list")
+  @DisplayName("Should throw exception for an empty list")
   public void testMultiplyEmptyList() {
-    assertEquals(1, multiplier.multiply(), "Result should be 1 for an empty list");
+    assertThrows(IllegalStateException.class, () -> multiplier.multiply(),
+        "Should throw IllegalStateException for an empty list");
   }
 
   @Test
