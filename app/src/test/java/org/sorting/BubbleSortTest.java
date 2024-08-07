@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 @DisplayName("BubbleSort class tests")
-public class BubbleSortingTest {
+public class BubbleSortTest {
 
   @Test
   @DisplayName("Should sort the array in ascending order") 
