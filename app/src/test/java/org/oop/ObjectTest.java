@@ -13,7 +13,9 @@ import org.junit.jupiter.api.DisplayName;
 /**
  * Tests the Employee class, its properties and its methods.
  */
+@DisplayName("Employee class tests")
 public class ObjectTest {
+
   private static List<Employee> employees;
 
   @BeforeAll
@@ -67,7 +69,7 @@ public class ObjectTest {
   }
 
   @Test
-  @DisplayName("Should return correct string representation for each employee")
+  @DisplayName("Should return string representation for employee object")
   void testToString() {
     assertAll("Should return correct string representation for each employee",
       () -> assertEquals("Employee{name='John Doe', age=64, salary=1000.00}", employees.get(0).toString(), "String representation should be 'Employee{name='John Doe', age=64, salary=1000.00}'"),
@@ -89,8 +91,10 @@ public class ObjectTest {
   }
 
   @Nested
+  @DisplayName("Setters edge cases")
   class PropertySetterEdgeCaseTests {
     @Test
+    @DisplayName("Should not accept negative age")
     void shouldNotAcceptNegativeAge() {
       Employee employee = employees.get(0);
       IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
@@ -99,6 +103,7 @@ public class ObjectTest {
     }
 
     @Test
+    @DisplayName("Should not accept negative salary")
     void shouldNotAcceptNegativeSalary() {
       Employee employee = employees.get(1);
       IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
@@ -107,6 +112,7 @@ public class ObjectTest {
     }
   }
 
+  // Helper method to get a list of employees
   private static List<Employee> getEmployees() {
     return List.of(
       new Employee("John Doe", 64, 1000),

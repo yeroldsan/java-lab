@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 
-@DisplayName("Tests ListMultiplier class")
+@DisplayName("ListMultiplier class tests")
 public class ListMultiplierTest {
 
   private static ListMultiplier multiplier;
