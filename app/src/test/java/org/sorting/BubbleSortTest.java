@@ -27,11 +27,12 @@ public class BubbleSortingTest {
   }
 
   @Test
+  @DisplayName("Test bubble sort with empty array")
   public void testBubbleSortWithEmptyArray() {
     int[] arr = {};
     BubbleSort.sort(arr);
     int[] expected = {};
-    assertArrayEquals(expected, arr);
+    assertArrayEquals(expected, arr, "Should return an empty array");
   }
 
   @Test
