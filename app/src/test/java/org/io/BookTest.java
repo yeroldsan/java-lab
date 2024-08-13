@@ -1,15 +1,19 @@
 package org.io;
 
-import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.io.TempDir;
 
 public class BookTest {
 
@@ -26,36 +30,51 @@ public class BookTest {
   }
 
   @Test
-  @Disabled("book's attributes are private and cannot be accessed directly")
-  public void testReadBook() {
-    // book.readBook("books.csv");
-    // assertEquals("Harry Potter", book.title);
-    // assertEquals("J.K. Rowling", book.author);
-    // assertEquals("Bloomsbury Publishing", book.publisher);
-    // assertEquals("1997", book.year);
+  @DisplayName("Should correctly populate fields from a valid CSV file")
+  public void testReadBook(@TempDir Path tempDir) throws IOException {
+    // Create a temporary CSV file
+    File tempFile = tempDir.resolve("books.csv").toFile();
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+      writer.write("Harry Potter,J.K. Rowling,Bloomsbury Publishing,1997");
+    }
+
+    book.readBook(tempFile.getAbsolutePath());
+
+    assertEquals("Harry Potter", book.getTitle());
+    assertEquals("J.K. Rowling", book.getAuthor());
+    assertEquals("Bloomsbury Publishing", book.getPublisher());
+    assertEquals("1997", book.getYear());
   }
 
   @Test
   @DisplayName("Should return correct string representation")
-  public void testToString() throws FileNotFoundException, IOException {
-    book.readBook("books.csv");
-    assertEquals("Harry Potter by J.K. Rowling, published by Bloomsbury Publishing in 1997", book.toString(),
-      "Should return correct string representation");
+  public void testToString(@TempDir Path tempDir) throws IOException {
+    // Create a temporary CSV file
+    File tempFile = tempDir.resolve("books.csv").toFile();
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+      writer.write("Harry Potter,J.K. Rowling,Bloomsbury Publishing,1997");
+    }
+
+    book.readBook(tempFile.getAbsolutePath());
+
+    assertEquals("Harry Potter by J.K. Rowling, published by Bloomsbury Publishing in 1997", book.toString());
   }
 
   @Test
-  @DisplayName("FileNotFoundException for non-existent file")
-  public void testReadBookFileNotFoundException() throws FileNotFoundException, IOException {
-    book.readBook("non_existent_file.csv");
-    assertThrows(FileNotFoundException.class, () -> book.readBook("non_existent_file.csv"),
-      "Should throw FileNotFoundException for non-existent file");
+  @DisplayName("Should throw FileNotFoundException for non-existent file")
+  public void testReadBookFileNotFoundException() {
+    assertThrows(FileNotFoundException.class, () -> book.readBook("non_existent_file.csv"));
   }
 
   @Test
-  @DisplayName("IOException for incorrect format")
-  public void testReadBookIOException() {
-    // Simulate an IOException by reading a file with incorrect format
-    assertThrows(IOException.class, () -> book.readBook("incorrect_format.csv"),
-      "Should throw IOException for incorrect format");
+  @DisplayName("Should throw IOException for incorrectly formatted CSV")
+  public void testReadBookIOException(@TempDir Path tempDir) throws IOException {
+    // Create a temporary CSV file with incorrect format
+    File tempFile = tempDir.resolve("incorrect_format.csv").toFile();
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+      writer.write("Harry Potter;J.K. Rowling;Bloomsbury Publishing;1997");
+    }
+
+    assertThrows(IOException.class, () -> book.readBook(tempFile.getAbsolutePath()));
   }
 }
